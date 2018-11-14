@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/edu/article/index','Edu\ArticleController@index')->name('edu.article.index');
-Route::get('/edu/article/create','Edu\ArticleController@create')->name('edu.article.create');
-Route::post('/deu/article/store','Edu\ArticleController@store')->name('edu.article.store');
-//资源路由
-Route::resource('/edu/photo','Edu\PhotoController');
+//网站首页
+Route::get('/','HomeController@index')->name('home');
+
+//用户管理
+Route::get('/login','UserController@login')->name('login');
+Route::get('/register','UserController@register')->name('register');
+Route::post('/register','UserController@store')->name('register');
+
+//工具类
+Route::any('/code/send','Util\CodeController@send')->name('code.send');
