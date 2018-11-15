@@ -32,7 +32,7 @@
 
             <!-- Subheading -->
             <p class="text-muted text-center mb-5">
-                登录帐号社区参与交流与学习
+                登录帐号社区参与交流与学习##############
             </p>
 
             <!-- Form -->
@@ -92,7 +92,9 @@
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
-                        已有账号 ? <a href="">去登陆</a>.
+                        已有账号 ? <a href="{{route('login')}}">去登陆</a>.
+                        <a href="{{route('password_reset')}}">重置密码</a>
+                        <a href="{{route('home')}}">返回首页</a>
                     </small>
                 </div>
 

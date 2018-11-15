@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -41,11 +41,10 @@ class UserRequest extends FormRequest
         ];
     }
 
-
-
     //自定义错误消息提示内容
     public function messages()
     {
+
         return [
             'name.required'     =>'请输入昵称' ,
             'email.email'       =>'请输入正确邮箱' ,
@@ -56,7 +55,4 @@ class UserRequest extends FormRequest
             'code.required'     =>'请输入验证码'
         ];
     }
-
-
 }
-
