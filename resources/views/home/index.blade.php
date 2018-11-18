@@ -15,11 +15,12 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
-
-    <title>Dashkit</title>
+    <link rel="shortcut icon" href=" /favicon.ico" />
+    <title>嘻嘻嘻嘻嘻</title>
 </head>
 <body>
-
+@can('view',auth()->user())
+    @endcan
 <!-- TOPNAV
 ================================================== -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -32,7 +33,7 @@
 
         <!-- Brand -->
         <a class="navbar-brand mr-auto" href="index.html">
-            <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/logo.svg" alt="..." class="navbar-brand-img">
+            <img src="{{asset('org/images/front-logo.png')}}" alt="..." class="navbar-brand-img">
         </a>
 
         <!-- Form -->
@@ -162,25 +163,10 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
 
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-4by3">
-                                            <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-3.jpg" alt="..." class="avatar-img rounded">
-                                        </div>
+
 
                                     </div>
-                                    <div class="col ml--2">
 
-                                        <!-- Title -->
-                                        <h4 class="text-body mb-1 name">
-                                            Safari Exploration
-                                        </h4>
-
-                                        <!-- Time -->
-                                        <p class="small text-muted mb-0">
-                                            <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
-                                        </p>
-
-                                    </div>
                                 </div> <!-- / .row -->
 
                             </a>
@@ -535,9 +521,9 @@
                 <!-- Menu -->
                 <div class="dropdown-menu dropdown-menu-right">
                 <a href="profile-posts.html" class="dropdown-item">{{auth()->user()->name}}</a>
-{{--                    @if(auth()->user()->is_admin ==1)--}}
+                    @can('view',auth()->user())
                         <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
-                    {{--@endif--}}
+                    @endcan
 
                 <hr class="dropdown-divider">
                 <a href="{{route('logout')}}" class="dropdown-item">注销登录</a>
@@ -562,7 +548,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">
-                        Dashboard
+                        首页
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -572,217 +558,217 @@
                     <ul class="dropdown-menu" aria-labelledby="topnavPages">
                         <li class="dropright">
                             <a class="dropdown-item dropdown-toggle" href="#!" id="topnavProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Profile
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavProfile">
-                                <a class="dropdown-item" href="profile-posts.html">
-                                    Posts
-                                </a>
-                                <a class="dropdown-item" href="profile-groups.html">
-                                    Groups
-                                </a>
-                                <a class="dropdown-item" href="profile-projects.html">
-                                    Projects
-                                </a>
-                                <a class="dropdown-item" href="profile-files.html">
-                                    Files
-                                </a>
-                                <a class="dropdown-item" href="profile-subscribers.html">
-                                    Subscribers
-                                </a>
-                            </div>
-                        </li>
-                        <li class="dropright">
-                            <a class="dropdown-item dropdown-toggle" href="#!" id="topnavProject" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Project
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavProject">
-                                <a class="dropdown-item" href="project-overview.html">
-                                    Overview
-                                </a>
-                                <a class="dropdown-item" href="project-files.html">
-                                    Files
-                                </a>
-                                <a class="dropdown-item" href="project-reports.html">
-                                    Reports
-                                </a>
-                                <a class="dropdown-item" href="project-new.html">
-                                    New project
-                                </a>
-                            </div>
-                        </li>
-                        <li class="dropright">
-                            <a class="dropdown-item dropdown-toggle" href="#!" id="topnavTeam" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Team
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavTeam">
-                                <a class="dropdown-item" href="team-overview.html">
-                                    Overview
-                                </a>
-                                <a class="dropdown-item" href="team-project.html">
-                                    Project
-                                </a>
-                                <a class="dropdown-item" href="team-members.html">
-                                    Members
-                                </a>
-                                <a class="dropdown-item" href="team-new.html">
-                                    New team
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="orders.html">
                                 Orders
                             </a>
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavProfile">--}}
+                                {{--<a class="dropdown-item" href="profile-posts.html">--}}
+                                    {{--Posts--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="profile-groups.html">--}}
+                                    {{--Groups--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="profile-projects.html">--}}
+                                    {{--Projects--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="profile-files.html">--}}
+                                    {{--Files--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="profile-subscribers.html">--}}
+                                    {{--Subscribers--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
                         </li>
-                        <li>
-                            <a class="dropdown-item" href="feed.html">
-                                Feed
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="settings.html">
-                                Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="invoice.html">
-                                Invoice
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="pricing.html">
-                                Pricing
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#!" id="topnavAuth" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Auth
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="topnavAuth">
-                        <li class="dropright">
-                            <a class="dropdown-item dropdown-toggle" href="#!" id="topnavSignIn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sign in
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavSignIn">
-                                <a class="dropdown-item" href="sign-in-cover.html">
-                                    Cover
-                                </a>
-                                <a class="dropdown-item" href="sign-in-illustration.html">
-                                    Illustration
-                                </a>
-                                <a class="dropdown-item" href="sign-in-basics.html">
-                                    Basic
-                                </a>
-                            </div>
-                        </li>
-                        <li class="dropright">
-                            <a class="dropdown-item dropdown-toggle" href="#!" id="topnavSignUp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sign up
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavSignUp">
-                                <a class="dropdown-item" href="sign-up-cover.html">
-                                    Cover
-                                </a>
-                                <a class="dropdown-item" href="sign-up-illustration.html">
-                                    Illustration
-                                </a>
-                                <a class="dropdown-item" href="sign-up.html">
-                                    Basic
-                                </a>
-                            </div>
-                        </li>
-                        <li class="dropright">
-                            <a class="dropdown-item dropdown-toggle" href="#!" id="topnavPassword" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Password reset
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavPassword">
-                                <a class="dropdown-item" href="password-reset-cover.html">
-                                    Cover
-                                </a>
-                                <a class="dropdown-item" href="password-reset-illustration.html">
-                                    Illustration
-                                </a>
-                                <a class="dropdown-item" href="password-reset.html">
-                                    Basic
-                                </a>
-                            </div>
-                        </li>
-                        <li class="dropright">
-                            <a class="dropdown-item dropdown-toggle" href="#!" id="topnavError" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Error
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavError">
-                                <a class="dropdown-item" href="error-illustration.html">
-                                    Illustration
-                                </a>
-                                <a class="dropdown-item" href="error.html">
-                                    Basic
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#!" id="topnavLayouts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Layouts
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="topnavLayouts">
-                        <li>
-                            <a class="dropdown-item" href="index.html">
-                                Sidenav
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="dashboard-side-topnav.html">
-                                Side + top nav
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item  active " href="dashboard-topnav.html">
-                                Topnav
-                            </a>
-                        </li>
-                        <li class="dropright">
-                            <a class="dropdown-item dropdown-toggle" href="#!" id="topnavDashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Without hero chart
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnavDashboard">
-                                <a class="dropdown-item" href="dashboard-no-hero.html">
-                                    Sidenav
-                                </a>
-                                <a class="dropdown-item" href="dashboard-side-topnav-no-hero.html">
-                                    Side + topnav
-                                </a>
-                                <a class="dropdown-item " href="dashboard-topnav-no-hero.html">
-                                    Topnav
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#!" id="topnavDocumentation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Docs
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="topnavDocumentation">
-                        <li>
-                            <a class="dropdown-item" href="getting-started.html">
-                                Getting started
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="components.html">
-                                Components
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="changelog.html">
-                                Changelog
-                            </a>
-                        </li>
+                        {{--<li class="dropright">--}}
+                            {{--<a class="dropdown-item dropdown-toggle" href="#!" id="topnavProject" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Project--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavProject">--}}
+                                {{--<a class="dropdown-item" href="project-overview.html">--}}
+                                    {{--Overview--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="project-files.html">--}}
+                                    {{--Files--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="project-reports.html">--}}
+                                    {{--Reports--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="project-new.html">--}}
+                                    {{--New project--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropright">--}}
+                            {{--<a class="dropdown-item dropdown-toggle" href="#!" id="topnavTeam" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Team--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavTeam">--}}
+                                {{--<a class="dropdown-item" href="team-overview.html">--}}
+                                    {{--Overview--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="team-project.html">--}}
+                                    {{--Project--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="team-members.html">--}}
+                                    {{--Members--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="team-new.html">--}}
+                                    {{--New team--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="orders.html">--}}
+                                {{--Orders--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="feed.html">--}}
+                                {{--Feed--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="settings.html">--}}
+                                {{--Settings--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="invoice.html">--}}
+                                {{--Invoice--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="pricing.html">--}}
+                                {{--Pricing--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item dropdown">--}}
+                    {{--<a class="nav-link dropdown-toggle" href="#!" id="topnavAuth" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                        {{--Auth--}}
+                    {{--</a>--}}
+                    {{--<ul class="dropdown-menu" aria-labelledby="topnavAuth">--}}
+                        {{--<li class="dropright">--}}
+                            {{--<a class="dropdown-item dropdown-toggle" href="#!" id="topnavSignIn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Sign in--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavSignIn">--}}
+                                {{--<a class="dropdown-item" href="sign-in-cover.html">--}}
+                                    {{--Cover--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="sign-in-illustration.html">--}}
+                                    {{--Illustration--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="sign-in-basics.html">--}}
+                                    {{--Basic--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropright">--}}
+                            {{--<a class="dropdown-item dropdown-toggle" href="#!" id="topnavSignUp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Sign up--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavSignUp">--}}
+                                {{--<a class="dropdown-item" href="sign-up-cover.html">--}}
+                                    {{--Cover--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="sign-up-illustration.html">--}}
+                                    {{--Illustration--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="sign-up.html">--}}
+                                    {{--Basic--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropright">--}}
+                            {{--<a class="dropdown-item dropdown-toggle" href="#!" id="topnavPassword" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Password reset--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavPassword">--}}
+                                {{--<a class="dropdown-item" href="password-reset-cover.html">--}}
+                                    {{--Cover--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="password-reset-illustration.html">--}}
+                                    {{--Illustration--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="password-reset.html">--}}
+                                    {{--Basic--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropright">--}}
+                            {{--<a class="dropdown-item dropdown-toggle" href="#!" id="topnavError" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Error--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavError">--}}
+                                {{--<a class="dropdown-item" href="error-illustration.html">--}}
+                                    {{--Illustration--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="error.html">--}}
+                                    {{--Basic--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item dropdown">--}}
+                    {{--<a class="nav-link dropdown-toggle" href="#!" id="topnavLayouts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                        {{--Layouts--}}
+                    {{--</a>--}}
+                    {{--<ul class="dropdown-menu" aria-labelledby="topnavLayouts">--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="index.html">--}}
+                                {{--Sidenav--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="dashboard-side-topnav.html">--}}
+                                {{--Side + top nav--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item  active " href="dashboard-topnav.html">--}}
+                                {{--Topnav--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropright">--}}
+                            {{--<a class="dropdown-item dropdown-toggle" href="#!" id="topnavDashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Without hero chart--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu" aria-labelledby="topnavDashboard">--}}
+                                {{--<a class="dropdown-item" href="dashboard-no-hero.html">--}}
+                                    {{--Sidenav--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item" href="dashboard-side-topnav-no-hero.html">--}}
+                                    {{--Side + topnav--}}
+                                {{--</a>--}}
+                                {{--<a class="dropdown-item " href="dashboard-topnav-no-hero.html">--}}
+                                    {{--Topnav--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item dropdown">--}}
+                    {{--<a class="nav-link dropdown-toggle" href="#!" id="topnavDocumentation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                        {{--Docs--}}
+                    {{--</a>--}}
+                    {{--<ul class="dropdown-menu" aria-labelledby="topnavDocumentation">--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="getting-started.html">--}}
+                                {{--Getting started--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="components.html">--}}
+                                {{--Components--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a class="dropdown-item" href="changelog.html">--}}
+                                {{--Changelog--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                     </ul>
                 </li>
             </ul>
@@ -1112,220 +1098,40 @@
             </div>
         </div> <!-- / .row -->
         <div class="row">
-            <div class="col-12 col-xl-4">
 
-                <!-- Projects -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col">
-
-                                <!-- Title -->
-                                <h4 class="card-header-title">
-                                    Projects
-                                </h4>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <!-- Link -->
-                                <a href="#!" class="small">View all</a>
-
-                            </div>
-                        </div> <!-- / .row -->
-                    </div>
-                    <div class="card-body">
-
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <a href="project-overview.html" class="avatar avatar-4by3">
-                                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-1.jpg" alt="..." class="avatar-img rounded">
-                                </a>
-
-                            </div>
-                            <div class="col ml--2">
-
-                                <!-- Title -->
-                                <h4 class="card-title mb-1">
-                                    <a href="project-overview.html">Homepage Redesign</a>
-                                </h4>
-
-                                <!-- Time -->
-                                <p class="card-text small text-muted">
-                                    <time datetime="2018-05-24">Updated 5hr ago</time>
-                                </p>
-
-                            </div>
-                            <div class="col-auto">
 
                                 <!-- Dropdown -->
-                                <div class="dropdown">
-                                    <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fe fe-more-vertical"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#!" class="dropdown-item">
-                                            Action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Another action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Something else here
-                                        </a>
-                                    </div>
-                                </div>
+                                {{--<div class="dropdown">--}}
+                                    {{--<a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                        {{--<i class="fe fe-more-vertical"></i>--}}
+                                    {{--</a>--}}
+                                    {{--<div class="dropdown-menu dropdown-menu-right">--}}
+                                        {{--<a href="#!" class="dropdown-item">--}}
+                                            {{--Action--}}
+                                        {{--</a>--}}
+                                        {{--<a href="#!" class="dropdown-item">--}}
+                                            {{--Another action--}}
+                                        {{--</a>--}}
+                                        {{--<a href="#!" class="dropdown-item">--}}
+                                            {{--Something else here--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
-                            </div>
-                        </div> <!-- / .row -->
+                            {{--</div>--}}
+                        {{--</div> <!-- / .row -->--}}
 
-                        <!-- Divider -->
-                        <hr>
-
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <a href="project-overview.html" class="avatar avatar-4by3">
-                                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
-                                </a>
-
-                            </div>
-                            <div class="col ml--2">
-
-                                <!-- Title -->
-                                <h4 class="card-title mb-1">
-                                    <a href="project-overview.html">Travels & Time</a>
-                                </h4>
-
-                                <!-- Time -->
-                                <p class="card-text small text-muted">
-                                    <time datetime="2018-05-24">Updated 3hr ago</time>
-                                </p>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                    <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fe fe-more-vertical"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#!" class="dropdown-item">
-                                            Action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Another action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Something else here
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                        <!-- Divider -->
-                        <hr>
+                        {{--<!-- Divider -->--}}
+                        {{--<hr>--}}
 
                         <div class="row align-items-center">
                             <div class="col-auto">
 
-                                <!-- Avatar -->
-                                <a href="project-overview.html" class="avatar avatar-4by3">
-                                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-3.jpg" alt="..." class="avatar-img rounded">
-                                </a>
+
 
                             </div>
-                            <div class="col ml--2">
 
-                                <!-- Title -->
-                                <h4 class="card-title mb-1">
-                                    <a href="project-overview.html">Safari Exploration</a>
-                                </h4>
 
-                                <!-- Time -->
-                                <p class="card-text small text-muted">
-                                    <time datetime="2018-05-24">Updated 10hr ago</time>
-                                </p>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                    <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fe fe-more-vertical"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#!" class="dropdown-item">
-                                            Action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Another action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Something else here
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                        <!-- Divider -->
-                        <hr>
-
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-
-                                <!-- Avatar -->
-                                <a href="project-overview.html" class="avatar avatar-4by3">
-                                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-5.jpg" alt="..." class="avatar-img rounded">
-                                </a>
-
-                            </div>
-                            <div class="col ml--2">
-
-                                <!-- Title -->
-                                <h4 class="card-title mb-1">
-                                    <a href="project-overview.html">Personal Site</a>
-                                </h4>
-
-                                <!-- Time -->
-                                <p class="card-text small text-muted">
-                                    <time datetime="2018-05-24">Updated 4hr ago</time>
-                                </p>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                    <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fe fe-more-vertical"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="#!" class="dropdown-item">
-                                            Action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Another action
-                                        </a>
-                                        <a href="#!" class="dropdown-item">
-                                            Something else here
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div> <!-- / .row -->
-
-                    </div> <!-- / .card-body -->
                 </div> <!-- / .card -->
 
             </div>
@@ -1335,6 +1141,26 @@
 
 </div> <!-- / .main-content -->
 
+            <footer class="container">
+                <hr class="my-0">
+                <div class="text-center py-6">
+                    <div>
+                        <p class="text-muted">2005大陆最新反黑力作。全25集黑帮卧底潜透</p>
+                        <small class="small text-secondary">
+                            Copyright © 2010-2018 aaaaaaaaa.com All Rights Reserved
+                            粤ICP备12048441号
+                        </small>
+                        <p class="small text-secondary">
+                            <i class="fa fa-phone-square" aria-hidden="true"></i> : 0769-86467608
+                            <i class="fa fa-telegram ml-2" aria-hidden="true"></i> :
+                            <a href="mailto:1447481528@qq.com" class="text-secondary">
+                                12345678@qq.com
+                            </a>
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </footer>
 <!-- JAVASCRIPT
 ================================================== -->
 
