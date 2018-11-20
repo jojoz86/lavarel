@@ -14,6 +14,13 @@
 //网站首页
 Route::get('/','HomeController@index')->name('home');
 
+//前台
+Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function(){
+    Route::get('/','HomeController@index')->name('index');
+    //文章管理
+    Route::resource('article','ArticleController');
+
+});
 //用户管理
 Route::get('/login','UserController@login')->name('login');
 Route::post('/login','UserController@loginForm')->name('login');

@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
 //            'password' => bcrypt('secret'),
 //        ]);
         //调用模型工厂一次性填充30个数
-        factory(\App\User::class,1)->create();
+        factory(\App\User::class,30)->create();
         //修改1数据为正式数据
         $user = \App\User::find(1);
         $user->name = 'sally';

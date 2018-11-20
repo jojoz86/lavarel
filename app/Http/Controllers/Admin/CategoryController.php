@@ -77,7 +77,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-       dd($category);
+//       dd($category);
 		$category->update($request->all());
 		return redirect()->route('admin.category.index')->with('success','操作成功');
     }

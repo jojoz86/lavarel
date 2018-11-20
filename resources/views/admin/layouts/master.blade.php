@@ -328,5 +328,7 @@
 <script>
     require(['bootstrap'])
 </script>
+{{--引用JS占位--}}
+@stack('js')
 </body>
 </html>

@@ -56,7 +56,7 @@
 
                  </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="remember" id="remember" value="1">
+                    <input type="checkbox" class="form-check-input" name="remember" id="remember" value="31">
                     <label class="form-check-label" for="remember">记住我</label>
                 </div>
 

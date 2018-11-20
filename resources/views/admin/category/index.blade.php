@@ -37,10 +37,7 @@
                             </div>
                             <div class="col-auto">
 
-                                <!-- Buttons -->
-                                {{--<a href="{{route('admin.category.create')}}" class="btn btn-white btn-sm">--}}
-                                    {{--添加栏目--}}
-                                {{--</a>--}}
+
 
                             </div>
                         </div>
