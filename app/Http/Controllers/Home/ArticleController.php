@@ -20,12 +20,12 @@ class ArticleController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
 
 //显示后台文章首页index每列显示10个文章，Models/Article.php有定义文章与用户的关联，定义栏目关联
         //测试模型关联
-        $article = Article::find(10);
+//        $article = Article::find(10);
         //dd($article->toArray());
         //dd($article);
         //dd($article->user);
@@ -36,12 +36,21 @@ class ArticleController extends Controller
 
         //测试策略
 //        $data = Article::find(10);
-//        dd($data);
+//        接收category参数
+
+        $category = $request->query('category');
+//        Article是models模型里面的方法
+        $articles = Article::latest();
+        if($category){
+            $articles = $articles->where('category_id',$category);
+        }
+        $articles = $articles->paginate(10);
 //        paginate（）分页上一页，下一页
-        $articles = Article::latest()->paginate(10);
+//        $articles = Article::latest()->paginate(10);
         //$articles = Article::latest()->get();
 //        dd($articles->toArray());
-        return view('home.article.index',compact('articles','data'));
+        $categories = Category::all();
+        return view('home.article.index',compact('articles','categories'));
     }
 
     public function create()
@@ -62,7 +71,7 @@ class ArticleController extends Controller
 //        dd($request->all());
         $article->title = $request->title;
         $article->category_id = $request->category_id;
-        $article->content = $request->content;
+        $article->content = $request['content'];
         $article->user_id = auth()->id();
 //        dd($article);
         $article->save();
@@ -94,7 +103,7 @@ class ArticleController extends Controller
         $this->authorize('update',$article);
         $article->title = $request->title;
         $article->category_id = $request->category_id;
-        $article->content = $request->content;
+        $article->content = $request['content'];
         //$article->user_id = auth()->id();
 //        dd($article);
         $article->save();

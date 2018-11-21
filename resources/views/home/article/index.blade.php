@@ -26,17 +26,16 @@
 
                                         <!-- Toggle -->
                                         <a href="#!" class="small text-muted dropdown-toggle" data-toggle="dropdown">
-                                            Sort order
+                                            筛选
                                         </a>
 
                                         <!-- Menu -->
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item sort" data-sort="name" href="#!">
-                                                Asc
-                                            </a>
-                                            <a class="dropdown-item sort" data-sort="name" href="#!">
-                                                Desc
-                                            </a>
+                                            @foreach($categories as $category)
+                                                <a class="dropdown-item sort" data-sort="name" href="{{route('home.article.index',['category'=>$category['id']])}}">
+                                                    {{$category['title']}}
+                                                </a>
+                                            @endforeach
                                         </div>
 
                                     </div>
@@ -63,10 +62,8 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <a href="" class="avatar avatar-sm">
-                                                    {{--发表文件章图像--}}
+                                                <a href="{{route('member.user.show',$article->user)}}" class="avatar avatar-sm">
                                                     <img src="{{$article->user->icon}}" alt="..." class="avatar-img rounded">
-
                                                 </a>
 
                                             </div>
@@ -74,24 +71,18 @@
 
                                                 <!-- Title -->
                                                 <h4 class="card-title mb-1 name">
-                                                    {{--发表文章抬头--}}
                                                     <a href="{{route('home.article.show',$article)}}">{{$article->title}}</a>
-
                                                 </h4>
 
                                                 <p class="card-text small mb-1">
-                                                    <a href="" class="text-secondary mr-2">
-                                                        <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                                        {{--发表文章用户名--}}
-                                                        {{$article->user->name}}
+                                                    <a href="{{route('member.user.show',$article->user)}}" class="text-secondary mr-2">
+                                                        <i class="fa fa-user-circle" aria-hidden="true"></i> {{$article->user->name}}
                                                     </a>
                                                     {{--Carbon 处理时间库--}}
-                                                    {{--在写 feed 流功能时，经常要用到 Carbon 的 diffForHumans 方法，以方便返回直观的时间描述。--}}
-                                                    <i class="fa fa-clock-o" aria-hidden="true">{{$article->created_at->diffForHumans()}}</i>
+                                                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{$article->created_at->diffForHumans()}}
 
                                                     <a href="http://www.houdunren.com/edu/topics_1.html" class="text-secondary ml-2">
-                                                        {{--<i class="fa fa-folder-o" aria-hidden="true"></i></a>--}}
-                                                    <i class="fa fa-folder-o" aria-hidden="true"></i>{{$article->category->title}}</a>
+                                                        <i class="fa fa-folder-o" aria-hidden="true"></i> {{$article->category->title}}</a>
                                                 </p>
 
                                             </div>
@@ -111,13 +102,11 @@
                                                                 编辑
                                                             </a>
                                                         @endcan
-                                                        {{--@can调用策略--}}
                                                         @can('delete',$article)
                                                             <a href="javascript:;" onclick="del(this)" class="dropdown-item">
                                                                 删除
                                                             </a>
                                                             <form action="{{route('home.article.destroy',$article)}}" method="post">
-                                                                      {{--************--}}
                                                                 @csrf @method('DELETE')
                                                             </form>
                                                         @endcan
@@ -133,7 +122,10 @@
 
                         </div>
                     </div>
-                    {{$articles->links()}}
+                    {{--自定义分页url--}}
+                    {{--手册位置：分页-->附加参数到分页链接--}}
+                    {{--appends(['参数名' => '参数值'])--}}
+                    {{$articles->appends(['category' => Request::query('category')])->links()}}
                 </div>
             </div> <!-- / .row -->
         </div>

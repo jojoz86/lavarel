@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
 
-    <title>乔驰云</title>
+    <title>后盾人</title>
 </head>
 <body>
 <!-- TOPNAV
@@ -547,8 +547,7 @@
                     </a>
                     <!-- Menu -->
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="profile-posts.html" class="dropdown-item">{{auth()->user()->name}}</a>
-                        {{--@can调用策略--}}
+                        <a href="{{route('member.user.show',auth()->user())}}" class="dropdown-item">{{auth()->user()->name}}</a>
                         @can('view',auth()->user())
                             <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
                         @endcan
@@ -604,7 +603,7 @@
 <!-- MAIN CONTENT
 ================================================== -->
 <div class="main-content">
-    {{--父模板，@yield指令是用来展示某个指定 section 所代表的内容的。理解为一个占位符--}}
+
     @yield('content')
 
 </div> <!-- / .main-content -->
@@ -612,16 +611,16 @@
     <hr class="my-0">
     <div class="text-center py-6">
         <div>
-            <p class="text-muted">2005大陆最新反黑力作。全25集黑帮卧底潜透</p>
+            <p class="text-muted">我们的使命：传播互联网前沿技术，帮助更多的人实现梦想</p>
             <small class="small text-secondary">
-                Copyright © 2010-2018 aaaaaaaaa.com All Rights Reserved
-                粤ICP备12048441号
+                Copyright © 2010-2018 houdunren.com All Rights Reserved
+                京ICP备12048441号-3
             </small>
             <p class="small text-secondary">
-                <i class="fa fa-phone-square" aria-hidden="true"></i> : 0769-86467608
+                <i class="fa fa-phone-square" aria-hidden="true"></i> : 010-86467608
                 <i class="fa fa-telegram ml-2" aria-hidden="true"></i> :
-                <a href="mailto:1447481528@qq.com" class="text-secondary">
-                    12345678@qq.com
+                <a href="mailto:23000711698@qq.com" class="text-secondary">
+                    23000711698@qq.com
                 </a>
                 <br>
             </p>
@@ -638,7 +637,6 @@
 </script>
 @include('layouts.message')
 <!-- Theme JS -->
-{{--占位符--}}
 @stack('js')
 </body>
 </html>
