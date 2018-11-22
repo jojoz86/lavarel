@@ -15,7 +15,7 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
-
+     @stack('css')
     <title>后盾人</title>
 </head>
 <body>

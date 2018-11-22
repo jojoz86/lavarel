@@ -6,7 +6,7 @@
                 <div class="card card-body p-5">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="http://www.houdunren.com/common/favorite?model=EduTopic&amp;id=60" class="btn btn-xs">
+                            <a href="" class="btn btn-xs">
                                 <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏</a>
                         </div>
                     </div>
@@ -16,14 +16,15 @@
                                 {{$article['title']}}
                             </h2>
                             <p class="text-muted mb-1 text-muted small">
-                                <a href="" class="text-secondary">
+                                <a href="{{route('member.user.show',$article->user)}}" class="text-secondary">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                </a><a href="" class="text-secondary">{{$article->user->name}}</a>
+                                </a>
+                                <a href="{{route('member.user.show',$article->user)}}" class="text-secondary">{{$article->user->name}}</a>
 
                                 <i class="fa fa-clock-o ml-2" aria-hidden="true"></i>
                                 {{$article->created_at->diffForHumans()}}
 
-                                <a href="" class="text-secondary">
+                                <a href="{{route('home.article.index',['category'=>$article->category->id])}}" class="text-secondary">
                                     <i class="fa fa-folder-o ml-2" aria-hidden="true"></i>
                                     {{$article->category->title}}
                                 </a>
@@ -39,12 +40,13 @@
                         </div>
                     </div>
                 </div>
+{{--                @include('home.layouts.comment')--}}
             </div>
             <div class="col-12 col-xl-3">
                 <div class="card">
                     <div class="card-header">
                         <div class="text-center">
-                            <a href="" class="text-secondary">
+                            <a href="{{route('member.user.show',$article->user)}}" class="text-secondary">
                                 {{$article->user->name}}
                             </a>
                         </div>
@@ -56,16 +58,19 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card-footer text-muted">
-                        <a class="btn btn-white btn-block btn-xs" href="{{route('member.attention',$article->user)}}">
-                            @if($article->user->fans->contains(auth()->user()))
-
-                                <i class="fa fa-map-pin" aria-hidden="true"></i>取消关注
-                            @else
-                            <i class="fa fa-plus" aria-hidden="true"></i> 关注 TA
-                            @endif
-                        </a>
-                    </div>
+                    @auth()
+                        @can('isNotMine',$article->user)
+                            <div class="card-footer text-muted">
+                                <a class="btn btn-white btn-block btn-xs" href="{{route('member.attention',$article->user)}}">
+                                    @if($article->user->fans->contains(auth()->user()))
+                                        取消关注
+                                    @else
+                                        <i class="fa fa-plus" aria-hidden="true"></i> 关注 TA
+                                    @endif
+                                </a>
+                            </div>
+                        @endcan
+                        @endauth
                 </div>
             </div>
         </div>

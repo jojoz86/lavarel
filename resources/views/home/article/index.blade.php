@@ -1,6 +1,6 @@
 @extends('home.layouts.master')
 @section('content')
-    {{--@can('update',$data)--}}
+{{--    @can('update',$data)--}}
     {{--@endcan--}}
     <div class="container mt-5">
         <div class="container-fluid">

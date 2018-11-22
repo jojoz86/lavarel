@@ -13,46 +13,24 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        //
+       $this->middleware('auth',[
+           'only'=>['edit','update','attention']
+       ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
+//    显示用户详情
     public function show(User $user)
     {
 //         dd($user);
+//        获取当前用户发表的文章
         $articles = Article::latest()->where('user_id',$user->id)->paginate(10);
         return view('member.user.show',compact('user','articles'));
     }
 
-
+//   用户资料个修改
     public function edit(User $user,Request $request)
     {
 //        调用策略
@@ -62,7 +40,7 @@ class UserController extends Controller
         return view('member.user.edit_'.$type,compact('user'));
     }
 
-
+//    用户资料更新
     public function update(Request $request, User $user)
     {
         $data = $request->all();
@@ -87,11 +65,28 @@ class UserController extends Controller
         return back()->with('success','操作成功');
     }
 
-
+//     关注 取消关注   这里user被关注着
     public function attention(User $user)
     {
-//          dd($user);
-          $user->fans()->toggle(auth()->user());
-          return back();
+//        自已不能关注自已
+        $this->authorize('isNotMine',$user);
+        //dd($user);
+        //auth()->user()->following()->toggle($user);
+        $user->fans()->toggle(auth()->user());
+        return back();
     }
+
+//    我的粉丝
+     public function myFans(User $user){
+//        获取$user用户的数丝
+         $fans = $user->fans()->paginate(10);
+//         dd($fans);
+         return view('member.user.my_fans',compact('user','fans'));
+     }
+//     我关注的人
+     public function myFollowing(User $user){
+//        获取$user用户关注的人
+         $followings = $user->following()->paginate(10);
+         return view('member.user.my_following',compact('user','followings'));
+     }
 }
