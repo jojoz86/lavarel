@@ -18,11 +18,14 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function(){
     Route::get('/','HomeController@index')->name('index');
     //文章管理
     Route::resource('article','ArticleController');
+
 });
 //会员中心
 Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function(){
     //用户管理
     Route::resource('user','UserController');
+    //    定义关注取消关注
+    Route::get('attention/{user}','UserController@attention')->name('attention');
 });
 
 //用户管理

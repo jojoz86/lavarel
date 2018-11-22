@@ -88,8 +88,10 @@ class UserController extends Controller
     }
 
 
-    public function destroy(User $user)
+    public function attention(User $user)
     {
-//
+//          dd($user);
+          $user->fans()->toggle(auth()->user());
+          return back();
     }
 }
