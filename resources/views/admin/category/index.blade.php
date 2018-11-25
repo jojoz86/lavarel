@@ -87,6 +87,7 @@
 @endsection
 @push('js')
     <script>
+        {{--操作成功弹框提示--}}
         function del(obj) {
             require(['hdjs','bootstrap'], function (hdjs) {
                 hdjs.confirm('确定删除吗?', function () {

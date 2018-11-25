@@ -37,13 +37,17 @@ class UserController extends Controller
         ]);
         //执行登录
         //手册：用户认证
-        $credentials = $request->only('email', 'password');
-        if(\Auth::attempt($credentials)){
+        $credentials=$request->only( 'email' , 'password' );
+        if( \Auth::attempt( $credentials , $request->remember ) ){
             //登录成功，跳转到首页
-            return redirect()->route('home')->with('success','登录成功');
-        }
-        return redirect()->back()->with('danger','用户名密码不正确');
+            if( $request->from ){
+                return redirect( $request->from )->with( 'success' , '登录成功' );
+            }
 
+            return redirect( '/')->with( 'success' , '登录成功' );
+        }
+
+        return redirect()->back()->with( 'danger' , '用户名密码不正确' );
     }
     //加载注册页面
     public function register(){

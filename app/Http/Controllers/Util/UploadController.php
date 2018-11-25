@@ -18,18 +18,24 @@ class UploadController extends Controller
    public function uploader(Request $request){
        //dd(11);
 //      dd(asset(''));
-//       以下这句话中第一个attachment意思上传文件存储目录
-//       第二个attachment对应confin/filesystem.php中disk选项中attachment
+//        两个file都是类********************************
+//          $request是请求的指向*******************
        $file = $request->file('file');
 //       对上传文件的大小以及类型拦截
+//       checkType()方法是否是系统自带*******************
        $this->checkSize($file);
        $this->checkType($file);
         if ($file){
+//            以下这句话中第一个attachment意思上传文件存储目录
+//       第二个attachment对应confin/filesystem.php中disk选项中attachment
+//      store(把上传图片存储的目录，及*********attachment包含root' => public_path())进行赋值
             $path = $file->store('attachment','attachment');
 //            将上传数据存储到数据表
 //            我们创建附件的模型与迁移文件
 //            关联添加
+//            attachment()是什么******************
             auth()->user()->attachment()->create([
+//                'name'****************
                 'name'=>$file->getClientOriginalName(),
                 'path'=>url($path)
             ]);
@@ -37,6 +43,7 @@ class UploadController extends Controller
         }
 //       dd($path);
 //       dd(url($path));
+//       ***********************
       return ['file' =>url($path),'code'=>0];
    }
 

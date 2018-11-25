@@ -107,7 +107,8 @@
         let option = {
             //按钮
             el: '#bt',
-            //后台链接
+            //后台链接，在路由有设置，及CodeController.php控制器
+
             url: '{{route('util.code.send')}}',
             //验证码等待发送时间
             timeout: 10,

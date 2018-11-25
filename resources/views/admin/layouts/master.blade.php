@@ -326,6 +326,7 @@
 @include('layouts.hdjs')
 @include('layouts.message')
 <script>
+    // 请求bootstrap的js
     require(['bootstrap'])
 </script>
 {{--引用JS占位--}}

@@ -41,7 +41,7 @@
         function upImagePc() {
             require(['hdjs'], function (hdjs) {
                 var options = {
-                    multiple: false,//是否允许多图上传
+                      multiple: false,//是否允许多图上传
                     //data是向后台服务器提交的POST数据
                     data: {name: '后盾人', year: 2099},
                 };

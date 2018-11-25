@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Requests\ArticleRequest;
 use App\models\Article;
 use App\Models\Category;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -81,6 +82,7 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
+        $user = User::find(1);
         return view('home.article.show',compact('article'));
     }
 

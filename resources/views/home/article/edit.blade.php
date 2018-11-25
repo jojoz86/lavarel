@@ -63,6 +63,7 @@
     </div>
 @endsection
 @push('js')
+    {{--文章的编辑，https://www.kancloud.cn/houdunwang/hdjs/743833--}}
     <script>
         require(['hdjs'], function (hdjs) {
             hdjs.editormd("editormd", {

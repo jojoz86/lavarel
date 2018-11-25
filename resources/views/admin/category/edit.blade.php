@@ -62,6 +62,7 @@
                                 </div>
                                 <input type="text" readonly name="icon" value="{{$category['icon']}}" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 <div class="input-group-append">
+                                    {{--操作成功提示js  choose--}}
                                     <span class="input-group-text" onclick="choose()" style="cursor: pointer">选择图标</span>
                                 </div>
                             </div>
@@ -75,6 +76,7 @@
     </div>
 @endsection
 @push('js')
+    {{--操作成功提示--}}
     <script>
         function choose() {
             require(['hdjs'], function (hdjs) {

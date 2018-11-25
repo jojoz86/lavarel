@@ -2,7 +2,7 @@
     window.hdjs={
         //组件目录必须绝对路径
         base : '{{asset('org/hdjs')}}',
-        //上传文件后台地址
+        //上传文件后台地址，在views/layouts/hdjs.blade.php文件里设置
         uploader : '{{route("util.upload")}}?',
         //获取文件列表的后台地址
         filesLists : '{{route("util.filesLists")}}?',

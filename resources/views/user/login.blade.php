@@ -36,7 +36,7 @@
             </p>
 
             <!-- Form -->
-            <form method="post" action="{{route('login')}}">
+            <form method="post" action="{{route('login',['from'=>Request::query('from')])}}">
                 @csrf
                 <div class="form-group">
                     <!-- Label -->
@@ -87,20 +87,20 @@
 </div>
 @include('layouts.hdjs')
 @include('layouts.message')
-<script>
-    require(['hdjs','bootstrap'], function (hdjs) {
-        let option = {
-            //按钮
-            el: '#bt',
-            //后台链接
-            url: '{{route('util.code.send')}}',
-            //验证码等待发送时间
-            timeout: 10,
-            //表单，手机号或邮箱的INPUT表单
-            input: '[name="email"]'
-        };
-        hdjs.validCode(option);
-    })
-</script>
+{{--<script>--}}
+    {{--require(['hdjs','bootstrap'], function (hdjs) {--}}
+        {{--let option = {--}}
+            {{--//按钮--}}
+            {{--el: '#bt',--}}
+            {{--//后台链接，在路由有设置，及CodeController.php控制器--}}
+            {{--url: '{{route('util.code.send')}}',--}}
+            {{--//验证码等待发送时间--}}
+            {{--timeout: 10,--}}
+            {{--//表单，手机号或邮箱的INPUT表单--}}
+            {{--input: '[name="email"]'--}}
+        {{--};--}}
+        {{--hdjs.validCode(option);--}}
+    {{--})--}}
+{{--</script>--}}
 </body>
 </html>

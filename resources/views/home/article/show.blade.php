@@ -14,6 +14,7 @@
                         <div class="col text-center">
                             <h2 class="mb-4">
                                 {{$article['title']}}
+                                {{--<p>你好</p>--}}
                             </h2>
                             <p class="text-muted mb-1 text-muted small">
                                 <a href="{{route('member.user.show',$article->user)}}" class="text-secondary">
@@ -40,8 +41,9 @@
                         </div>
                     </div>
                 </div>
-{{--                @include('home.layouts.comment')--}}
+                @include('home.layouts.comment')
             </div>
+
             <div class="col-12 col-xl-3">
                 <div class="card">
                     <div class="card-header">
@@ -53,7 +55,7 @@
                     </div>
                     <div class="card-block text-center p-5">
                         <div class="avatar avatar-xl">
-                            <a href="">
+                            <a href="{{route('member.user.show',$article->user)}}">
                                 <img src="{{$article->user->icon}}" alt="..." class="avatar-img rounded-circle">
                             </a>
                         </div>

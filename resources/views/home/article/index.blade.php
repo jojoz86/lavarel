@@ -133,6 +133,8 @@
 @endsection
 @push('js')
     <script>
+        // 文章列表删除弹框https://www.kancloud.cn/houdunwang/hdjs/704012
+        // 后又提示成功删除弹框https://www.kancloud.cn/houdunwang/hdjs/704012
         function del(obj) {
             require(['https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js'], function (swal) {
                 swal("确定删除?", {
