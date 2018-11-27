@@ -49,4 +49,10 @@ class User extends Authenticatable
     public function following(){
         return $this->belongsToMany(User::class,'followers','following_id','user_id');
     }
+
+//    获取收藏的人
+    public function collects(){
+        return $this->hasMany(Attachment::class);
+    }
+
 }

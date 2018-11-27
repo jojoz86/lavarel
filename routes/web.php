@@ -26,6 +26,10 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function(){
 //    评论
 //    comment是取CommentController前面的名字
      Route::resource('comment','CommentController');
+//     点赞  取消赞
+    Route::get('zan/make','ZanController@make')->name('zan.make');
+//     收藏   取消收藏
+    Route::get('collect/make','CollectController@make')->name('collect.make');
 });
 //会员中心
 //prefix是member用户控制器目录
@@ -44,6 +48,8 @@ Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function
 //    UserController@myFollowing会员member控制器下我关注的方法
 //    get_following/{user}是views/member模板下的模板文件，{user}要与控制器$user参数一致
     Route::get('get_following/{user}','UserController@myFollowing')->name('my_following');
+//    我的收藏
+    Route::get('get_collects/{user}','UserController@mycollects')->name('my_collects');
 });
 
 //用户管理

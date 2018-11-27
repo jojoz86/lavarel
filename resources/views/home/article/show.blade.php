@@ -6,15 +6,24 @@
                 <div class="card card-body p-5">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="" class="btn btn-xs">
+                          @auth
+                             @if($article->collect->where('user_id',auth()->id())->first())
+                            <a href="{{route('home.collect.make',['type'=>'article','id'=>$article['id']])}}" class="btn btn-xs">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i> 取消收藏</a>
+                            @else
+                            <a href="{{route('home.collect.make',['type'=>'article','id'=>$article['id']])}}" class="btn btn-xs">
                                 <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏</a>
+                            @endif
+                        @else
+                                <a href="{{route('login',['from'=>url()->full()])}}" class="btn btn-xs">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏</a>
+                         @endauth
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
                             <h2 class="mb-4">
                                 {{$article['title']}}
-                                {{--<p>你好</p>--}}
                             </h2>
                             <p class="text-muted mb-1 text-muted small">
                                 <a href="{{route('member.user.show',$article->user)}}" class="text-secondary">
@@ -40,10 +49,36 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div class="text-center">
+                        {{--设@auth是让用户登录后才显示下面的信息--}}
+                        @auth
+                              {{--路由参数：type 指的是点赞类型(article/comment) id点赞的文章/评论 id--}}
+                             @if($article->zan->where('user_id',auth()->id())->first())
+                                <a class="btn btn-danger" href="{{route('home.zan.make',['type'=>'article','id'=>$article['id']])}}">👍 取消赞</a>
+                             @else
+                                <a class="btn btn-white" href="{{route('home.zan.make',['type'=>'article','id'=>$article['id']])}}">👍 点赞</a>
+                             @endif
+                        @else
+                            <a class="btn btn-white" href="{{route('login',['from'=>url()->full()])}}">👍 点赞</a>
+                      @endauth
+                    </div>
+                    <div class="row">
+
+                        <div class="col-12 mr--3">
+
+                            <div class="avatar-group d-none d-sm-flex">
+                                @foreach($article->zan as $zan)
+                                    <a href="{{route('member.user.show',$zan->user)}}" class="avatar avatar-xs" data-toggle="tooltip" title="" data-original-title="Ab Hadley">
+                                        <img src="{{$zan->user->icon}}" alt="..." class="avatar-img rounded-circle border border-white">
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 @include('home.layouts.comment')
             </div>
-
             <div class="col-12 col-xl-3">
                 <div class="card">
                     <div class="card-header">
@@ -72,7 +107,7 @@
                                 </a>
                             </div>
                         @endcan
-                        @endauth
+                    @endauth
                 </div>
             </div>
         </div>

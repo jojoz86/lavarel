@@ -23,6 +23,7 @@
 
                                 <!-- Title -->
                                 <h5 class="comment-title">
+                                    <a></a>
                                     @{{v.user.name}}
                                 </h5>
 
@@ -31,7 +32,8 @@
 
                                 <!-- Time -->
                                 <time class="comment-time">
-                                    👍 2 | @{{v.created_at }}
+                                   <a href="" ></a>
+                                    @{{v.created_at }}
                                 </time>
 
                             </div>
@@ -79,7 +81,7 @@
 
 </div>
 @push('js')
-    @auth
+    {{--@auth--}}
     <script>
         require(['hdjs', 'vue', 'axios', 'MarkdownIt', 'marked', 'highlight'], function (hdjs, Vue, axios, MarkdownIt, marked) {
             var vm = new Vue({
@@ -89,6 +91,8 @@
                     comments: [],//全部评论
                 },
                 methods: {
+                    {{--// @auth用户登录才能提交评论--}}
+                    @auth
                     //提交评论
                     send() {
                         //评论不能为空
@@ -123,8 +127,11 @@
                             editormd.replaceSelection("");
                         })
                     },
+                    @endauth
                 },
                 mounted() {
+                    {{--@auth判断用户权限登录才能使用--}}
+                    @auth
                     //渲染编辑器
                     hdjs.editormd("editormd", {
                         width: '100%',
@@ -148,6 +155,7 @@
                             vm.$set(vm.comment, 'content', this.getValue());
                         }
                     });
+                    @endauth
                     //请求当前文章所有评论数据
                     axios.get('{{route("home.comment.index",['article_id'=>$article['id']])}}')
                         .then((response) => {
@@ -168,5 +176,5 @@
             });
         })
     </script>
-    @endauth
+    {{--@endauth--}}
 @endpush

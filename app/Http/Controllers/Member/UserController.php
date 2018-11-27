@@ -89,4 +89,14 @@ class UserController extends Controller
          $followings = $user->following()->paginate(10);
          return view('member.user.my_following',compact('user','followings'));
      }
+
+//     我的收藏
+     public function mycollects(User $user){
+//        获取$user用户收藏的人
+//         $collects = $user->following()->paginate(10);
+         $collects = $user->collects()->paginate(10);
+//         user**********************
+//
+         return view('member.user.my_collect',compact('user','collects'));
+     }
 }

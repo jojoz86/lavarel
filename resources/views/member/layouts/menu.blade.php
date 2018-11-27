@@ -56,6 +56,15 @@
                         他的关注
                     @endcan
                 </a>
+                <a href="{{route('member.my_collects',$user)}}" class="nav-link text-muted
+              {{--**********************--}}
+             {{active_class(if_route(['member.my_collects']), 'active', '')}}">
+                    @can('isMine',$user)
+                        我的收藏
+                     @else
+                        他的收藏
+                    @endcan
+                </a>
             </div>
         </div>
     </div>
