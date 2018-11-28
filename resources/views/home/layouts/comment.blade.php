@@ -23,22 +23,19 @@
 
                                 <!-- Title -->
                                 <h5 class="comment-title">
-                                    <a></a>
                                     @{{v.user.name}}
                                 </h5>
 
                             </div>
                             <div class="col-auto">
-
                                 <!-- Time -->
                                 <time class="comment-time">
-                                   <a href="" ></a>
-                                    @{{v.created_at }}
+                                    <a href="" @click.prevent="zan(v)" class="text-muted">👍 @{{v.zan_num}}</a>
+                                    |
+                                    @{{ v.created_at }}
                                 </time>
-
                             </div>
                         </div> <!-- / .row -->
-
                         <!-- Text -->
                         <p class="comment-text" v-html="v.content">
                         </p>
@@ -54,34 +51,32 @@
         <hr>
 
         <!-- Form -->
-          @auth()
-        <div class="row align-items-start">
-            <div class="col-auto">
+        @auth()
+            <div class="row align-items-start">
+                <div class="col-auto">
 
+                    <!-- Avatar -->
+                    <div class="avatar">
+                        <img src="{{auth()->user()->icon}}" alt="..." class="avatar-img rounded-circle">
+                    </div>
 
-                <!-- Avatar -->
-                <div class="avatar">
-                    <img src="{{auth()->user()->icon}}" alt="..." class="avatar-img rounded-circle">
                 </div>
+                <div class="col ml--2">
 
-            </div>
-            <div class="col ml--2">
+                    <div id="editormd">
+                        <textarea style="display:none;"></textarea>
+                    </div>
+                    <button class="btn btn-primary" @click.prevent="send()">发表评论</button>
 
-                <div id="editormd">
-                    <textarea style="display:none;"></textarea>
                 </div>
-                <button class="btn btn-primary" @click.prevent="send()">发表评论</button>
-
-            </div>
-        </div> <!-- / .row -->
-           @else
+            </div> <!-- / .row -->
+        @else
             <p class="text-muted text-center">请 <a href="{{route('login',['from'=>url()->full()])}}">登录</a> 后评论</p>
-         @endauth
+        @endauth
     </div>
-
+    {{--@{{comments}}--}}
 </div>
 @push('js')
-    {{--@auth--}}
     <script>
         require(['hdjs', 'vue', 'axios', 'MarkdownIt', 'marked', 'highlight'], function (hdjs, Vue, axios, MarkdownIt, marked) {
             var vm = new Vue({
@@ -90,8 +85,14 @@
                     comment: {content: ''},//当前评论数据
                     comments: [],//全部评论
                 },
+                updated(){
+                    $(document).ready(function () {
+                        $('pre code').each(function (i, block) {
+                            hljs.highlightBlock(block);
+                        });
+                    });
+                },
                 methods: {
-                    {{--// @auth用户登录才能提交评论--}}
                     @auth
                     //提交评论
                     send() {
@@ -113,24 +114,28 @@
                             //将 markdown 转为 html
                             let md = new MarkdownIt();
                             response.data.comment.content = md.render(response.data.comment.content)
-                            $(document).ready(function () {
-                                $('pre code').each(function (i, block) {
-                                    hljs.highlightBlock(block);
-                                });
-                            });
+
                             //清空 vue 数据
                             this.comment.content = '';
                             //清空编辑器内容
                             //选中所有内容
-                            editormd.setSelection({line:0, ch:0}, {line:9999999, ch:9999999});
+                            editormd.setSelection({line: 0, ch: 0}, {line: 9999999, ch: 9999999});
                             //将选中文本替换成空字符串
                             editormd.replaceSelection("");
                         })
                     },
+                    //点赞
+                    zan(v){
+                        let url = '/home/zan/make?type=comment&id='+v.id;
+                        axios.get(url).then((response)=>{
+                            //console.log(response.data.num);
+                            v.zan_num = response.data.zan_num;
+                            //console.log(v);
+                        })
+                    }
                     @endauth
                 },
                 mounted() {
-                    {{--@auth判断用户权限登录才能使用--}}
                     @auth
                     //渲染编辑器
                     hdjs.editormd("editormd", {
@@ -165,16 +170,10 @@
                             //console.log(this.comments);
                             this.comments.forEach((v, k) => {
                                 v.content = md.render(v.content)
-                            })
-                            $(document).ready(function () {
-                                $('pre code').each(function (i, block) {
-                                    hljs.highlightBlock(block);
-                                });
                             });
                         });
                 },
             });
         })
     </script>
-    {{--@endauth--}}
 @endpush

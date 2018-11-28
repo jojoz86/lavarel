@@ -34,14 +34,14 @@ class ArticleController extends Controller
         //die;
         //找到跟当前文章分类相同所有文章
         //dd($article->category->article->toArray());
-
         //测试策略
 //        $data = Article::find(10);
 //        接收category参数
-
         $category = $request->query('category');
+//        dd($category);//
 //        Article是models模型里面的方法
         $articles = Article::latest();
+//        dd($category);
         if($category){
             $articles = $articles->where('category_id',$category);
         }

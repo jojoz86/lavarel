@@ -19,6 +19,7 @@ class ZanController extends Controller
             ]);
     }
 
+//    点赞  取消赞
     public function make(Request $request){
 //        要在模板页加年路由地址才可以打印，同时要设置好此控制器对应的路由为条件
         //dd($request->all());
@@ -67,7 +68,7 @@ class ZanController extends Controller
 //            这个需要重新获取对应模型，这句话结合异步请求
 //            $class是上面对models文件进行的变量赋值
             $newModel = $class::find($id);
-            return ['code'=>1,'message'=>'','num'=>$newModel->zan->count()];
+            return ['code'=>1,'message'=>'','zan_num'=>$newModel->zan->count()];
         }
         return back();
     }

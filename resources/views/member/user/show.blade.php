@@ -1,6 +1,7 @@
 @extends('home.layouts.master')
 @section('content')
     <div class="container mt-5">
+
         <div class="row">
             @include('member.layouts.menu')
             <div class="col-sm-9">

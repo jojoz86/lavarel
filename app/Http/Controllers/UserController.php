@@ -19,7 +19,7 @@ class UserController extends Controller
 
 
     //加载登录页面
-    public function login(){
+    public function login(Request $request){
 
         return view('user.login');
     }

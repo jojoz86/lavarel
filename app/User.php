@@ -3,6 +3,8 @@
 namespace App;
 
 use App\models\Attachment;
+use App\models\Collect;
+use App\models\Zan;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,9 +52,15 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class,'followers','following_id','user_id');
     }
 
-//    获取收藏的人
+//     用户关联 zan
+    public function zan(){
+        return $this->hasMany(Zan::class);
+    }
+
+
+//    用户关联 collect
     public function collects(){
-        return $this->hasMany(Attachment::class);
+        return $this->hasMany(Collect::class);
     }
 
 }

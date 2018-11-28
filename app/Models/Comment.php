@@ -21,6 +21,13 @@ class Comment extends Model
         return $this->morphMany(Zan::class,'zan');
     }
 
+//    评论关联通知
+     public function article(){
+        return $this->belongsTo(Article::class);
+     }
+
+
+
 //    定义  collect 多态关联
     public function collect(){
 //        第一个参数关联模型，第二参数跟数据迁移， collect_id  collect_type

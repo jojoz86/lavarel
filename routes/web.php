@@ -48,7 +48,13 @@ Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function
 //    UserController@myFollowing会员member控制器下我关注的方法
 //    get_following/{user}是views/member模板下的模板文件，{user}要与控制器$user参数一致
     Route::get('get_following/{user}','UserController@myFollowing')->name('my_following');
-//    我的收藏
+//    我的点赞
+    Route::get('get_zan/{user}','UserController@myZan')->name('my_zan');
+//   我的所有通知
+    Route::get('notify/{user}','NotifyController@index')->name('notify');
+    //标记已读
+    Route::get('notify/show/{notify}','NotifyController@show')->name('notify.show');
+    //    我的收藏
     Route::get('get_collects/{user}','UserController@mycollects')->name('my_collects');
 });
 
