@@ -16,7 +16,8 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
      @stack('css')
-    <title>呵呵呵</title>
+    <title>{{hd_config('base.title')}}</title>
+    {{--<title>vvbvbbv</title>--}}
 </head>
 <body>
 <!-- TOPNAV

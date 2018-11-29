@@ -24,7 +24,7 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         //测试模型关联
-        $article = Article::find(10);
+        $article = Article::find(5);
 //        dd($article->toArray());
 //显示后台文章首页index每列显示10个文章，Models/Article.php有定义文章与用户的关联，定义栏目关联
         //测试模型关联
@@ -47,7 +47,7 @@ class ArticleController extends Controller
         if($category){
             $articles = $articles->where('category_id',$category);
         }
-        $articles = $articles->paginate(10);
+        $articles = $articles->paginate(5);
 //        paginate（）分页上一页，下一页
 //        $articles = Article::latest()->paginate(10);
         //$articles = Article::latest()->get();

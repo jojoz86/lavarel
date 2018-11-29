@@ -50,35 +50,39 @@ class UploadController extends Controller
 //    验证上传大小
      private function checkSize($file){
 //
-       if($file->getSize()>20000000){
-//           使用异常类处理上传异常
-//           创建异常类：exception
-           throw new UploadException('上传文件过大');
-       }
+         //$file->getSize()获取上传文件大小
+         if($file->getSize() > hd_config('upload.size')){
+             //return  ['message' =>'上传文件过大', 'code' => 403];
+             //使用异常类处理上传异常
+             //创建异常类:exception
+             throw new UploadException('上传文件过大');
+         }
      }
 
 //     验证上传类型
-     private function checkType($file){
-       if (!in_array(strtolower($file->getClientOriginalExtension()),['jpg','png'])){
-           throw new UploadException('类型不允许');
-       }
-     }
+    private function checkType($file){
+        if(!in_array(strtolower($file->getClientOriginalExtension()),explode('|',hd_config('upload.type')))){
+            //return  ['message' =>'类型不允许', 'code' => 403];
+            throw new UploadException('类型不允许');
+        }
+    }
 //    获取图片列表
    public function filesLists(){
 
        $files = auth()->user()->attachment()->paginate(20);
        $data = [];
-       foreach ($files as $file){
-           $data[]=[
+       foreach($files as $file){
+           $data[] = [
                'url'=>$file['path'],
                'path'=>$file['path']
            ];
        }
-//       dd($data);
+       //1dd($data);
+
        return [
            'data'=>$data,
-           'page'=>$files->links() . '',//这里一定要注意分页后面拼接一个控字符串
-           'code'=>0
+           'page'=>$files->links() . '',//这里一定要注意分页后面拼接一个空字符串
+           'code'=> 0
        ];
 
    }

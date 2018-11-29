@@ -27,7 +27,7 @@ class UserController extends Controller
     {
 //         dd($user);
 //        获取当前用户发表的文章
-        $articles = Article::latest()->where('user_id',$user->id)->paginate(10);
+        $articles = Article::latest()->where('user_id',$user->id)->paginate(5);
         return view('member.user.show',compact('user','articles'));
     }
 
@@ -80,14 +80,14 @@ class UserController extends Controller
 //    我的粉丝
      public function myFans(User $user){
 //        获取$user用户的数丝
-         $fans = $user->fans()->paginate(10);
+         $fans = $user->fans()->paginate(5);
 //         dd($fans);
          return view('member.user.my_fans',compact('user','fans'));
      }
 //     我关注的人
      public function myFollowing(User $user){
 //        获取$user用户关注的人
-         $followings = $user->following()->paginate(10);
+         $followings = $user->following()->paginate(5);
          return view('member.user.my_following',compact('user','followings'));
      }
 
@@ -97,7 +97,7 @@ class UserController extends Controller
 //        通过用户查找该用户所有点赞数据
 //          dd($zan);
           $data=[];
-          $zansData=$user->zan()->where('zan_type','App\Models\\' . ucfirst($type))->paginate(1);
+          $zansData=$user->zan()->where('zan_type','App\Models\\' . ucfirst($type))->paginate(5);
 
           return view('member.user.my_zan_' . $type,compact('user','zans','zansData'));
       }
@@ -105,7 +105,7 @@ class UserController extends Controller
      public function mycollects(User $user){
 //        获取$user用户收藏的人
 //         $collects = $user->following()->paginate(10);
-         $collects = $user->collects()->paginate(10);
+         $collects = $user->collects()->paginate(5);
         // $collects = $user->collects()->get();
 //         user**********************
        //dd($collects);

@@ -17,7 +17,6 @@ class HomeController extends Controller
 //        dd(auth()->user());
         //获取所有动态
         $actives = Activity::latest()->paginate(5);
-
         //渲染模板页面
         return view('home.index',compact('actives'));
     }

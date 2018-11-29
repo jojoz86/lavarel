@@ -93,4 +93,8 @@ Route::group(['middleware' => ['admin.auth'],'prefix'=>'admin','namespace'=>'Adm
     //创建控制器指定模型
     //artisan make:controller --model=Models/Category Admin/CategoryController
     Route::resource('category','CategoryController');
+//    后台配置项管理
+//    {name}是地址栏的参数与控制器的$name数据库name键名一致
+    Route::get('config/edit/{name}','ConfigController@edit')->name('config.edit');
+    Route::post('config/update/{name}','ConfigController@update')->name('config.update');
 });

@@ -20,7 +20,7 @@ class NotifyController extends Controller
     public function index(User $user){
         $this->authorize('isMine',$user);
 //        列出所有通知
-        $notifications =$user->notifications()->paginate(10);
+        $notifications =$user->notifications()->paginate(5);
         return view('member.notify.index',compact('user','notifications'));
     }
     public function show(DatabaseNotification $notify){

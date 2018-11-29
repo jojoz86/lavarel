@@ -95,15 +95,29 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
-                        <i class="fe fe-user"></i> Authentication
+                        <i class="fe fe-user"></i> 网站配置
                     </a>
                     <div class="collapse show" id="sidebarAuth">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#sidebarSignIn" class="nav-link" >
-                                    Sign in
+                                <a href="{{route('admin.config.edit',['name'=>'base'])}}" class="nav-link">
+                                    基本配置
                                 </a>
-
+                                <a href="{{route('admin.config.edit',['name'=>'upload'])}}" class="nav-link" >
+                                    上传配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'mail'])}}" class="nav-link" >
+                                    邮件配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'code'])}}" class="nav-link" >
+                                    验证码配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'search'])}}" class="nav-link" >
+                                    搜索配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'wechat'])}}" class="nav-link" >
+                                    微信配置
+                                </a>
                             </li>
                         </ul>
                     </div>

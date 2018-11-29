@@ -33,7 +33,7 @@
                             @foreach($actives as $active)
                                 @if($active['log_name']=='article')
                                     @include('home.layouts._article')
-                                @elseif($active['log_name'=='comment'])
+                                @elseif($active['log_name']=='comment')
                                     @include('home.layouts._comment')
                                 @endif
                             @endforeach
