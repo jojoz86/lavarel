@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\models\Comment;
 use App\Notifications\CommentNotify;
+use App\User;
 
 class CommentObserver
 {
@@ -13,7 +14,10 @@ class CommentObserver
 //        具体评论数据
 //        dd($comment);
 //        发送通知
-        $comment->article->user->notify(new CommentNotify($comment));
+        if($comment->article->user->id != auth()->id()){
+            $comment->article->user->notify( new CommentNotify( $comment ) );
+        }
+
     }
 
     /**

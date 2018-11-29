@@ -11,9 +11,9 @@ class NotifyController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth',[
-//            'only'=>['index']
-//        ]);
+        $this->middleware('auth',[
+            'only'=>['index']
+        ]);
     }
 
 //    展示所有通知
@@ -24,8 +24,8 @@ class NotifyController extends Controller
         return view('member.notify.index',compact('user','notifications'));
     }
     public function show(DatabaseNotification $notify){
-         $notify->markAsRead();
-//         跳转到文章详情页，页面自动滚动到对应的评论
-        return redirect(route('home.article.show',$notify['data']['article_id']));
+        $notify->markAsRead();
+        //跳转到文章详情页,页面自动滚动到对应的评论,CommentNotify.php
+        return redirect($notify['data']['link']);
     }
 }

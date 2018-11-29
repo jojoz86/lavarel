@@ -23,7 +23,9 @@ class ArticleController extends Controller
 
     public function index(Request $request)
     {
-
+        //测试模型关联
+        $article = Article::find(10);
+//        dd($article->toArray());
 //显示后台文章首页index每列显示10个文章，Models/Article.php有定义文章与用户的关联，定义栏目关联
         //测试模型关联
 //        $article = Article::find(10);
@@ -39,7 +41,7 @@ class ArticleController extends Controller
 //        接收category参数
         $category = $request->query('category');
 //        dd($category);//
-//        Article是models模型里面的方法
+//        Article是models模型里面的方法,通过Article文章模型找对应的模型
         $articles = Article::latest();
 //        dd($category);
         if($category){
@@ -82,7 +84,6 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
-        $user = User::find(1);
         return view('home.article.show',compact('article'));
     }
 

@@ -42,15 +42,20 @@
 
                                                         <!-- Content -->
                                                         <div class="small text-muted">
-                                                            <strong class="text-body">{{$notification['data']['user_name']}}</strong> 评论了
-                                                            <strong class="text-body">{{$notification['data']['article_title']}}</strong>
+                                                            @if($notification->read_at)
+                                                                <span class="badge badge-soft-primary">已读</span>
+                                                            @endif
+                                                            <strong class="text-body">
+                                                                {{$notification['data']['user_name']}}</strong> 评论了
+                                                            <strong class="text-body">
+                                                                {{$notification['data']['article_title']}}</strong>
                                                         </div>
+
+                                                    </div>
+                                                    <div class="col-auto">
                                                         <small class="text-muted">
                                                             {{$notification->created_at->diffForHumans()}}
                                                         </small>
-                                                    </div>
-                                                    <div class="col-auto">
-
 
 
 

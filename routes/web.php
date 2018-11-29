@@ -30,6 +30,8 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function(){
     Route::get('zan/make','ZanController@make')->name('zan.make');
 //     收藏   取消收藏
     Route::get('collect/make','CollectController@make')->name('collect.make');
+    //搜索
+    Route::get('search','HomeController@search')->name('search');
 });
 //会员中心
 //prefix是member用户控制器目录

@@ -68,11 +68,11 @@
                         <div class="col-12 mr--3">
 
                             <div class="avatar-group d-none d-sm-flex">
-                                @foreach($article->zan as $zan)
-                                    <a href="{{route('member.user.show',$zan->user)}}" class="avatar avatar-xs" data-toggle="tooltip" title="" data-original-title="Ab Hadley">
-                                        <img src="{{$zan->user->icon}}" alt="..." class="avatar-img rounded-circle border border-white">
-                                    </a>
-                                @endforeach
+                                    @foreach($article->zan as $zan)
+                                        <a href="{{route('member.user.show',$zan->user)}}" class="avatar avatar-xs" data-toggle="tooltip" title="" data-original-title="Ab Hadley">
+                                            <img src="{{$zan->user->icon}}" alt="..." class="avatar-img rounded-circle border border-white">
+                                        </a>
+                                    @endforeach
                             </div>
                         </div>
                     </div>

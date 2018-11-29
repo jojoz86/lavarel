@@ -35,11 +35,11 @@
         </a>
 
         <!-- Form -->
-        <form class="form-inline mr-4 d-none d-lg-flex">
+        <form class="form-inline mr-4 d-none d-lg-flex" action="{{route('home.search')}}">
             <div class="input-group input-group-rounded input-group-merge" data-toggle="lists" data-lists-values='["name"]'>
 
                 <!-- Input -->
-                <input type="search" class="form-control form-control-prepended  dropdown-toggle search" data-toggle="dropdown" placeholder="Search" aria-label="Search">
+                <input type="text" name="wd" class="form-control form-control-prepended  dropdown-toggle search" data-toggle="dropdown" placeholder="Search" aria-label="Search">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <i class="fe fe-search"></i>
@@ -289,6 +289,7 @@
 
                         <!-- List group -->
                         <div class="list-group list-group-flush my--3">
+                            @if(auth()->user()->unreadNotifications()->count() !=0)
                             @foreach(auth()->user()->unreadNotifications()->limit(3)->get() as $notification)
                             <a class="list-group-item px-0" href="{{route('member.notify.show',$notification)}}">
 
@@ -321,6 +322,9 @@
 
                             </a>
                             @endforeach
+                            @else
+                                <p class="text-muted text-center">暂无通知</p>
+                            @endif
 
                         </div>
 
@@ -413,16 +417,16 @@
     <hr class="my-0">
     <div class="text-center py-6">
         <div>
-            <p class="text-muted">我们的使命：传播互联网前沿技术，帮助更多的人实现梦想</p>
+            <p class="text-muted">嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻</p>
             <small class="small text-secondary">
-                Copyright © 2010-2018 houdunren.com All Rights Reserved
-                京ICP备12048441号-3
+                Copyright © 2010-2018 aaaaaaaaa.com All Rights Reserved
+                yue ICP备12048441号-3
             </small>
             <p class="small text-secondary">
                 <i class="fa fa-phone-square" aria-hidden="true"></i> : 010-86467608
                 <i class="fa fa-telegram ml-2" aria-hidden="true"></i> :
-                <a href="mailto:23000711698@qq.com" class="text-secondary">
-                    23000711698@qq.com
+                <a href="mailto:222222222222@qq.com" class="text-secondary">
+                    111111111111@qq.com
                 </a>
                 <br>
             </p>

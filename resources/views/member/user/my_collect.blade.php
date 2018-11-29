@@ -53,7 +53,7 @@
                                                             <!-- Title -->
                                                             <h4 class="card-title mb-1 name">
                                                                 <a href="http://laravel-cms.edu/home/article/1">
-                                                                    {{$collect->belongsModel->content}}
+                                                                    {{$collect->belongsModel->title}}
 
                                                                 </a>
                                                             </h4>
@@ -97,12 +97,13 @@
                                         </ul>
 
                                     </div>
+
                                 </div>
 
 
                             </div>
                         </div> <!-- / .row -->
-{{--                        {{$zansData->appends(['type'=>Request::query('type')])->links()}}--}}
+
                     </div>
                 </div>
             </div>
