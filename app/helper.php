@@ -1,12 +1,15 @@
 <?php
 //助手函数
+//在已经定义的函数列表（包括系统自带的函数和用户自定义的函数）中查找 function_name。
+       //************
 if(!function_exists('hd_config')){
     //帮助读取后台配置项数据
     function hd_config($var){
-        //dd($var);
+//        dd($var);
         static $cache = [];
+//        explode() 函数把字符串打散为数组。
         $info = explode('.',$var);
-        //dd($info);
+//        dd($info);
         if(!$cache){
             //清空所有缓存
             //Cache::flush();
@@ -17,6 +20,7 @@ if(!function_exists('hd_config')){
             //dd($cache);
         }
         //isset($cache[$info[0]][$info[1]])?$cache[$info[0]][$info[1]]:''
+//        ??=isset
         return $cache[$info[0]][$info[1]]??'';
     }
 }

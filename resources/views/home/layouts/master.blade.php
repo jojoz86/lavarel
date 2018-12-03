@@ -4,17 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Libs CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/fonts/feather/feather.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/highlight/styles/vs2015.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/quill/dist/quill.core.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{{asset('org/swiper')}}/css/swiper.min.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="{{asset('org/swiper')}}/js/swiper.min.js"></script>
     <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
+{{--    <link rel="stylesheet" href="{{asset('org/css/swiper.min.css')}}">--}}
      @stack('css')
     <title>{{hd_config('base.title')}}</title>
     {{--<title>vvbvbbv</title>--}}
@@ -418,10 +421,14 @@
     <hr class="my-0">
     <div class="text-center py-6">
         <div>
-            <p class="text-muted">嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻</p>
+
+
+            <p class="text-muted">{{hd_config('base.keyword')}}</p>
             <small class="small text-secondary">
-                Copyright © 2010-2018 aaaaaaaaa.com All Rights Reserved
-                yue ICP备12048441号-3
+
+                <a>{{hd_config('base.description')}}</a>
+                <a>{{hd_config('base.icp')}}</a>
+
             </small>
             <p class="small text-secondary">
                 <i class="fa fa-phone-square" aria-hidden="true"></i> : 010-86467608
