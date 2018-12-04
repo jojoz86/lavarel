@@ -84,40 +84,16 @@
                     <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
                         <i class="fe fe-file"></i> 文章系统
                     </a>
-                    <div class="collapse show" id="sidebarPages">
+                    <div class="collapse " id="sidebarPages">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{route('admin.category.index')}}" class="nav-link" >
                                     栏目管理
                                 </a>
                             </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
-                        <i class="fe fe-user"></i> 网站配置
-                    </a>
-                    <div class="collapse show" id="sidebarAuth">
-                        <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{route('admin.config.edit',['name'=>'base'])}}" class="nav-link">
-                                    基本配置
-                                </a>
-                                <a href="{{route('admin.config.edit',['name'=>'upload'])}}" class="nav-link" >
-                                    上传配置
-                                </a>
-                                <a href="{{route('admin.config.edit',['name'=>'mail'])}}" class="nav-link" >
-                                    邮件配置
-                                </a>
-                                <a href="{{route('admin.config.edit',['name'=>'code'])}}" class="nav-link" >
-                                    验证码配置
-                                </a>
-                                <a href="{{route('admin.config.edit',['name'=>'search'])}}" class="nav-link" >
-                                    搜索配置
-                                </a>
-                                <a href="{{route('admin.config.edit',['name'=>'wechat'])}}" class="nav-link" >
-                                    微信配置
+                                <a href="" class="nav-link" >
+                                    轮播图管理
                                 </a>
                             </li>
                         </ul>
@@ -125,14 +101,50 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#sidebarLayouts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="fe fe-message-square"></i> 微信管理
+                        <i class="fe fe-layout"></i> 网站配置
                     </a>
-                    <div class="collapse show" id="sidebarLayouts">
+                    <div class="collapse " id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{route('wechat.button.index')}}" class="nav-link">
+                                <a href="{{route('admin.config.edit',['name'=>'base'])}}" class="nav-link">
+                                    基本配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'upload'])}}" class="nav-link">
+                                    上传配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'mail'])}}" class="nav-link">
+                                    邮件配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'code'])}}" class="nav-link">
+                                    验证码配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'search'])}}" class="nav-link">
+                                    搜索配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'wechat'])}}" class="nav-link">
+                                    微信配置
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#sidebarWechat" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+                        <i class="fe fe-message-square"></i> 微信管理
+                    </a>
+                    <div class="collapse show" id="sidebarWechat">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route('wechat.button.index')}}" class="nav-link" >
                                     微信菜单
                                 </a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('wechat.response_text.index')}}" class="nav-link" >
+                                    文本回复
+                                </a>
+
                             </li>
                         </ul>
                     </div>
@@ -144,7 +156,7 @@
                     <div class="collapse show" id="sidebarAuth">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{route('advert.carousel.index')}}" class="nav-link">
+                                <a href="" class="nav-link">
                                     广告列表
                                 </a>
                             </li>
@@ -322,6 +334,7 @@
                     <!-- Toggle -->
                     <a href="#!" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar avatar-sm avatar-online">
+
                             <img src="{{auth()->user()->icon}}" class="avatar-img rounded-circle" alt="...">
                         </div>
                     </a>

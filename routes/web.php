@@ -106,6 +106,8 @@ Route::group(['prefix'=>'wechat','namespace'=>'Wechat','as'=>'wechat.'],function
     Route::get('button/push/{button}','ButtonController@push')->name('button.push');
 //    微信通信地址
     Route::get('api/handler','ApiController@handler')->name('api.handler');
+    //基本文本回复
+    Route::resource('response_text','ResponseTextController');
 });
 
 //广告轮播图
