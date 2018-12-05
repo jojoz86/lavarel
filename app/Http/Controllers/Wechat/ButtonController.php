@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Wechat;
 
-use App\models\Button;
+
+use App\Models\Button;
 use App\Services\WechatService;
 use Houdunwang\WeChat\WeChat;
 use Illuminate\Http\Request;
@@ -10,6 +11,14 @@ use App\Http\Controllers\Controller;
 
 class ButtonController extends Controller
 {
+       public function __construct()
+       {
+           $this->middleware('admin.auth',[
+               'except'=>[],
+           ]);
+
+       }
+
 
     public function index()
     {
@@ -47,7 +56,9 @@ class ButtonController extends Controller
 //      *********************
     public function update(Request $request, Button $button)
     {
-        $button->update($request->all());
+        $data=$request->all();
+        $data['status']=0;
+        $button->update($data);
 //        redirect()**************
         return redirect()->route('wechat.button.index')->with('success','菜单编辑成功');
     }

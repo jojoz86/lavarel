@@ -12,14 +12,7 @@ use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
 
-////        构建结构中间组件优选运行
-//        $this->middleware('auth',[
-//            'only'=>['index','search']
-//        ]);
-    }
 
 
     public function index(){

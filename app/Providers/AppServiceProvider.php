@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Providers;
-use App\models\Comment;
-use App\models\Config;
+use App\Models\Comment;
+use App\Models\Config;
 use App\Observers\CommentObserver;
 use App\Observers\ConfigObserver;
 use App\Observers\UserObserver;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Member;
 use App\Models\Article;
-use App\models\Zan;
+use App\Models\Zan;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

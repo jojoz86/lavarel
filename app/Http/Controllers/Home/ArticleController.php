@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\ArticleRequest;
-use App\models\Article;
+use App\Models\Article;
 use App\Models\Category;
 use App\User;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         //测试模型关联
-        $article = Article::find(5);
+//        $article = Article::find(5);
 //        dd($article->toArray());
 //显示后台文章首页index每列显示10个文章，Models/Article.php有定义文章与用户的关联，定义栏目关联
         //测试模型关联

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
     {{--给wechat/button/create.blade 的css文件占位--}}
@@ -92,7 +93,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link" >
+                                <a href="{{route('admin.flash.index')}}" class="nav-link" >
                                     轮播图管理
                                 </a>
                             </li>
@@ -132,8 +133,17 @@
                     <a class="nav-link" href="#sidebarWechat" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="fe fe-message-square"></i> 微信管理
                     </a>
+
                     <div class="collapse show" id="sidebarWechat">
                         <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route('wechat.response_base.create')}}" class="nav-link" >
+                                    基本回复
+                                </a>
+
+                            </li>
+
+
                             <li class="nav-item">
                                 <a href="{{route('wechat.button.index')}}" class="nav-link" >
                                     微信菜单
@@ -143,6 +153,14 @@
                             <li class="nav-item">
                                 <a href="{{route('wechat.response_text.index')}}" class="nav-link" >
                                     文本回复
+                                </a>
+
+                            </li>
+
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('wechat.response_news.index')}}" class="nav-link" >
+                                    图文回复
                                 </a>
 
                             </li>

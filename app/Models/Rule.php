@@ -1,16 +1,27 @@
 <?php
 
-namespace App\models;
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Rule extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name','type'];
 
     //关联关键词
     public function keyword(){
 //        hasmany是rule一对多keyword
         return $this->hasMany(Keyword::class);
+    }
+
+    //文本回复
+    public function responseText(){
+        return $this->hasMany(ResponseText::class);
+    }
+
+    //图文回复
+    public function responseNews(){
+        return $this->hasMany(ResponseNews::class);
     }
 }

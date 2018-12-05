@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\models\Attachment;
-use App\models\Collect;
-use App\models\Zan;
+use App\Models\Attachment;
+use App\Models\Collect;
+use App\Models\Zan;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;

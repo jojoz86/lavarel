@@ -97,6 +97,8 @@ Route::group(['middleware' => ['admin.auth'],'prefix'=>'admin','namespace'=>'Adm
 //    {name}是地址栏的参数与控制器的$name数据库name键名一致
     Route::get('config/edit/{name}','ConfigController@edit')->name('config.edit');
     Route::post('config/update/{name}','ConfigController@update')->name('config.update');
+//     轮播图
+    Route::resource('flash','FlashControlle');
 });
 
 //微信管理
@@ -108,6 +110,11 @@ Route::group(['prefix'=>'wechat','namespace'=>'Wechat','as'=>'wechat.'],function
     Route::get('api/handler','ApiController@handler')->name('api.handler');
     //基本文本回复
     Route::resource('response_text','ResponseTextController');
+//    图文回复
+    Route::resource('response_news','ResponseNewsController');
+
+    //基本回复  关注回复以及默认回复
+    Route::resource('response_base','ResponseBaseController');
 });
 
 //广告轮播图

@@ -5,12 +5,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ResponseText extends Model
+class ResponseNews extends Model
 {
-    protected $fillable = ['content','rule_id'];
-    //关联规则
+//    允许填充
+      protected $fillable = ['data','rule_id'];
+    //不允许填充
+    //protected $guarded = [];
     public function rule(){
-//        belongsTo是responsetext一对多rule
         return $this->belongsTo(Rule::class);
     }
 }

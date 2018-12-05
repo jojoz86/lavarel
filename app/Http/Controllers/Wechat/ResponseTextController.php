@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\Wechat;
 
-use App\models\ResponseText;
+use App\Models\ResponseText;
 use App\Services\WechatService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class ResponseTextController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('admin.auth',[
+            'except'=>[],
+        ]);
+    }
+
     public function index()
     {
         //读取所有回复
@@ -38,18 +41,16 @@ class ResponseTextController extends Controller
     public function store(Request $request,WechatService $wechatService)
     {
         //开启事务
-//        ***********
-//        response_texts里面的content字段打印
-//        dd($request->data);
-//        引入wechatserviece类rulestore方法添回数据
-        $rule = $wechatService->ruleStore();
+        DB::beginTransaction();
+        //dd($request->data);
+        $rule = $wechatService->ruleStore('text');
         //添加回复内容
         ResponseText::create([
             'content'=>$request['data'],
             'rule_id'=>$rule['id'],
         ]);
         //事务提交
-//        ***********
+        DB::commit();
         return redirect()->route('wechat.response_text.index')->with('success','操作成功');
     }
 
